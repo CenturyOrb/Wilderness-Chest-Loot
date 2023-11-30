@@ -1,0 +1,4 @@
+name: Wilderness-Chest-Loot
+version: '${project.version}'
+main: com.rosed.wildernesschestloot.WildernessChestLoot
+api-version: '1.19'
