@@ -14,6 +14,7 @@ public enum InstanceManager {
         this.wildernessChestLoot = wildernessChestLoot;
 
         register();
+        System.out.println("start");
 
     }
 

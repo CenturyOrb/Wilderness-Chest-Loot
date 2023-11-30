@@ -7,6 +7,7 @@ public final class WildernessChestLoot extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        System.out.println("test");
         InstanceManager.INSTANCE.start(this);
         Bukkit.broadcastMessage("Wilderness-Chest-Loot has started");
     }
