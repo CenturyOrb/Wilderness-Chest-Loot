@@ -9,31 +9,36 @@ public enum InstanceManager {
 
     INSTANCE;
 
-    private WildernessChestLoot wildernessChestLoot;
+    private WildernessChestLoot plugin;
     private ItemManager itemManager;
 
-    public void start(WildernessChestLoot wildernessChestLoot)   {
+    public void start(WildernessChestLoot plugin) {
 
-        assert wildernessChestLoot != null : "Error while starting Wilderness-Chest-Loot";
-        this.wildernessChestLoot = wildernessChestLoot;
+        assert plugin != null : "Error while starting Wilderness-Chest-Loot";
+        this.plugin = plugin;
 
         register();
 
     }
 
-    private void register()   {
+    private void register() {
 
         // register managers
         itemManager = new ItemManager();
 
         // register events
-        Bukkit.getPluginManager().registerEvents(new ChestGenerateEvent(), wildernessChestLoot);
+        Bukkit.getPluginManager().registerEvents(new ChestGenerateEvent(), plugin);
 
         // register commands
-        wildernessChestLoot.getCommand("wilditems").setExecutor(new ItemCommand());
+        plugin.getCommand("wilditems").setExecutor(new ItemCommand());
     }
 
-    public ItemManager getItemManager()   { return itemManager; }
+    public ItemManager getItemManager() {
+        return itemManager;
+    }
 
+    public WildernessChestLoot getPlugin() {
+        return plugin;
+    }
 
 }
