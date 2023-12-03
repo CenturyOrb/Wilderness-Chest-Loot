@@ -8,8 +8,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.world.LootGenerateEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Random;
-
 
 public class ChestGenerateEvent implements Listener {
 
