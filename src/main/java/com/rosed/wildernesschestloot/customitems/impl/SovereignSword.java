@@ -23,10 +23,9 @@ public class SovereignSword implements CustomItem {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public <T extends Event> List<Class<T>> triggers() {
-        List<Class<T>> list = Lists.newArrayList();
-        list.add((Class<T>) EntityDamageByEntityEvent.class);
+    public List<Class<?>> triggers() {
+        List<Class<?>> list = Lists.newArrayList();
+        list.add(EntityDamageByEntityEvent.class);
         return list;
     }
 

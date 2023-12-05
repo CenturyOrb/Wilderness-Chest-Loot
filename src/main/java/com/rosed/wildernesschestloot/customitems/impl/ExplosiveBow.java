@@ -8,7 +8,6 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
@@ -23,11 +22,10 @@ public class ExplosiveBow implements CustomItem {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public <T extends Event> List<Class<T>> triggers() {
-        List<Class<T>> list = Lists.newArrayList();
-        list.add((Class<T>) EntityDamageByEntityEvent.class);
-        list.add((Class<T>) ProjectileHitEvent.class);
+    public List<Class<?>> triggers() {
+        List<Class<?>> list = Lists.newArrayList();
+        list.add(EntityDamageByEntityEvent.class);
+        list.add(ProjectileHitEvent.class);
         return list;
     }
 
