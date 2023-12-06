@@ -1,7 +1,6 @@
 package com.rosed.wildernesschestloot;
 
 import com.rosed.wildernesschestloot.item.ItemCommand;
-import com.rosed.wildernesschestloot.item.ItemManager;
 import org.bukkit.Bukkit;
 
 
@@ -10,7 +9,6 @@ public enum InstanceManager {
     INSTANCE;
 
     private WildernessChestLoot plugin;
-    private ItemManager itemManager;
 
     public void start(WildernessChestLoot plugin) {
 
@@ -24,17 +22,12 @@ public enum InstanceManager {
     private void register() {
 
         // register managers
-        itemManager = new ItemManager();
 
         // register events
         Bukkit.getPluginManager().registerEvents(new ChestGenerateEvent(), plugin);
 
         // register commands
         plugin.getCommand("wilditems").setExecutor(new ItemCommand());
-    }
-
-    public ItemManager getItemManager() {
-        return itemManager;
     }
 
     public WildernessChestLoot getPlugin() {

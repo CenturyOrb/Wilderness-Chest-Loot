@@ -5,6 +5,7 @@ import com.rosed.wildernesschestloot.customitems.CustomItem;
 import com.rosed.wildernesschestloot.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -19,7 +20,7 @@ public class SovereignSword implements CustomItem {
 
     @Override
     public void execute(LivingEntity executor, Entity... targets) {
-
+        Bukkit.broadcastMessage("Sovereign sword");
     }
 
     @Override
@@ -31,9 +32,9 @@ public class SovereignSword implements CustomItem {
 
     @Override
     public ItemStack itemStack() {
-        ItemStack sword = new ItemStack(Material.NETHERITE_SWORD);
+        ItemStack sword = new ItemStack(Material.GOLDEN_SWORD);
         sword.editMeta(meta -> {
-            meta.displayName(Component.text("Sovereign Sword", NamedTextColor.AQUA));
+            meta.displayName(Component.text("Sovereign Sword", NamedTextColor.BLUE));
             meta.addEnchant(org.bukkit.enchantments.Enchantment.DAMAGE_ALL, 4, true);
             meta.addEnchant(org.bukkit.enchantments.Enchantment.SWEEPING_EDGE, 10, true);
             meta.lore(Lists.newArrayList(

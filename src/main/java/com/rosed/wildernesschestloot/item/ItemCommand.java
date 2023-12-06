@@ -1,6 +1,7 @@
 package com.rosed.wildernesschestloot.item;
 
 import com.rosed.wildernesschestloot.InstanceManager;
+import com.rosed.wildernesschestloot.customitems.impl.SovereignSword;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,7 +16,7 @@ public class ItemCommand implements CommandExecutor {
         if (!(sender instanceof Player))   return false;
         Player player = (Player) sender;
 
-        player.getInventory().addItem(InstanceManager.INSTANCE.getItemManager().getSovereign());
+        player.getInventory().addItem( new SovereignSword().itemStack());
         return false;
     }
 
