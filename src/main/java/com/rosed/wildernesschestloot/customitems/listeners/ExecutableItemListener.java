@@ -89,7 +89,7 @@ public class ExecutableItemListener implements Listener {
         ItemStack handItem = entityEquipment.getItemInMainHand();
 
         // Check if the item is a custom item
-        ExecutableItem customItem = Util.getCustomItem(handItem);
+        ExecutableItem customItem = Util.getCustomItem(ExecutableItem.class, handItem);
         if (customItem == null)
             return;
 

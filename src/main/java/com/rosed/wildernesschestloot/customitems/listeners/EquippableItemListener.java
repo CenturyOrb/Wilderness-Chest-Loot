@@ -30,7 +30,7 @@ public class EquippableItemListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        List<EquippableItem> equippedItems = Util.equippedCustomItems(player.getEquipment());
+        List<EquippableItem> equippedItems = Util.equippedCustomItems(EquippableItem.class, player.getEquipment());
         for (EquippableItem item : equippedItems)
             item.onEquip(player);
     }
@@ -47,7 +47,7 @@ public class EquippableItemListener implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        List<EquippableItem> equippedItems = Util.equippedCustomItems(player.getEquipment());
+        List<EquippableItem> equippedItems = Util.equippedCustomItems(EquippableItem.class, player.getEquipment());
         for (EquippableItem item : equippedItems)
             item.onUnequip(player);
     }
@@ -98,8 +98,8 @@ public class EquippableItemListener implements Listener {
      * @param oldItem The old item that the player is un-equipping
      */
     private void executeItem(Player player, EquipmentSlot trigger, ItemStack newItem, ItemStack oldItem) {
-        EquippableItem oldCustomItem = Util.getCustomItem(oldItem);
-        EquippableItem newCustomItem = Util.getCustomItem(newItem);
+        EquippableItem oldCustomItem = Util.getCustomItem(EquippableItem.class, oldItem);
+        EquippableItem newCustomItem = Util.getCustomItem(EquippableItem.class, newItem);
 
         if (oldCustomItem != null && oldCustomItem.shouldTrigger(trigger))
             oldCustomItem.onUnequip(player);

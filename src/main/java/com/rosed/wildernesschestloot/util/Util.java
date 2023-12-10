@@ -1,7 +1,6 @@
 package com.rosed.wildernesschestloot.util;
 
 import com.google.common.collect.Lists;
-import com.google.gson.reflect.TypeToken;
 import com.rosed.wildernesschestloot.InstanceManager;
 import com.rosed.wildernesschestloot.customitems.impl.CustomItem;
 import org.bukkit.NamespacedKey;
@@ -21,19 +20,19 @@ public class Util {
     private Util() {
     }
 
-    public static <T extends CustomItem<?>> List<T> equippedCustomItems(EntityEquipment equipment) {
+    public static <T extends CustomItem<?>> List<T> equippedCustomItems(Class<T> itemType, EntityEquipment equipment) {
         List<T> customItems = Lists.newArrayList();
 
         if (equipment == null)
             return customItems;
 
         for (ItemStack item : equipment.getArmorContents()) {
-            T customItem = getCustomItem(item);
+            T customItem = getCustomItem(itemType, item);
             if (customItem != null)
                 customItems.add(customItem);
         }
 
-        T customItem = getCustomItem(equipment.getItemInMainHand());
+        T customItem = getCustomItem(itemType, equipment.getItemInMainHand());
         if (customItem != null)
             customItems.add(customItem);
 
@@ -54,7 +53,7 @@ public class Util {
         return item;
     }
 
-    public static <T extends CustomItem<?>> T getCustomItem(ItemStack item) {
+    public static <T extends CustomItem<?>> T getCustomItem(Class<T> itemType, ItemStack item) {
         if (item == null || item.getType().isEmpty())
             return null;
 
@@ -65,11 +64,9 @@ public class Util {
             return null;
 
         // Hacky way to get the class of the generic type
-        Class<?> clazz = new TypeToken<T>() {
-        }.getRawType();
         byte[] data = pdc.get(augmentKey, PersistentDataType.BYTE_ARRAY);
         Object customItem = deserialize(data);
-        if (!clazz.isInstance(customItem))
+        if (!itemType.isInstance(customItem))
             return null;
         return deserialize(data);
     }
