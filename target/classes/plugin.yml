@@ -2,6 +2,3 @@ name: Wilderness-Chest-Loot
 version: '1.0-SNAPSHOT'
 main: com.rosed.wildernesschestloot.WildernessChestLoot
 api-version: '1.19'
-
-commands:
-  wilditems:

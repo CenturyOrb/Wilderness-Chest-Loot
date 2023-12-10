@@ -1,20 +1,17 @@
-package com.rosed.wildernesschestloot.customitems.impl;
+package com.rosed.wildernesschestloot.customitems.impl.executable;
 
-import com.google.common.collect.Lists;
-import com.rosed.wildernesschestloot.customitems.CustomItem;
 import com.rosed.wildernesschestloot.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.List;
-
-public class ExplosiveBow implements CustomItem {
+public class ExplosiveBow implements ExecutableItem {
 
     @Override
     public void execute(LivingEntity executor, Entity... targets) {
@@ -22,11 +19,8 @@ public class ExplosiveBow implements CustomItem {
     }
 
     @Override
-    public List<Class<?>> triggers() {
-        List<Class<?>> list = Lists.newArrayList();
-        list.add(EntityDamageByEntityEvent.class);
-        list.add(ProjectileHitEvent.class);
-        return list;
+    public boolean shouldTrigger(Event trigger) {
+        return trigger instanceof EntityDamageByEntityEvent || trigger instanceof ProjectileHitEvent;
     }
 
     @Override
@@ -37,5 +31,15 @@ public class ExplosiveBow implements CustomItem {
             meta.setUnbreakable(true);
         });
         return Util.saveCustomItem(bow, this);
+    }
+
+    @Override
+    public String plainName() {
+        return "Explosive Bow";
+    }
+
+    @Override
+    public Component name() {
+        return Component.text("Explosive Bow", NamedTextColor.RED);
     }
 }

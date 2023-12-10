@@ -1,8 +1,7 @@
-package com.rosed.wildernesschestloot.customitems.impl;
+package com.rosed.wildernesschestloot.customitems.impl.executable;
 
 import com.google.common.collect.Lists;
 import com.rosed.wildernesschestloot.InstanceManager;
-import com.rosed.wildernesschestloot.customitems.CustomItem;
 import com.rosed.wildernesschestloot.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -12,38 +11,25 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.List;
-
-public class SovereignSword implements CustomItem {
+public class SovereignSword implements ExecutableItem {
 
     @Override
     public void execute(LivingEntity executor, Entity... targets) {
-
-        ItemMeta meta = executor.getEquipment().getItemInMainHand().getItemMeta();
-
-        new BukkitRunnable() {
-            @Override
-            public void run () {
-                ((Damageable) meta).setDamage(0);
-                executor.getEquipment().getItemInMainHand().setItemMeta(meta);
-            }
-        }.runTaskLater(InstanceManager.INSTANCE.getPlugin(), 1);
+        Bukkit.getScheduler().runTaskLater(InstanceManager.INSTANCE.getPlugin(), () -> {
+            executor.getEquipment().getItemInMainHand().editMeta(Damageable.class, meta -> meta.setDamage(0));
+        }, 1);
 
     }
 
     @Override
-    public List<Class<?>> triggers() {
-        List<Class<?>> list = Lists.newArrayList();
-        list.add(EntityDeathEvent.class);
-        return list;
+    public boolean shouldTrigger(Event trigger) {
+        return trigger instanceof EntityDeathEvent;
     }
 
     @Override
@@ -55,17 +41,27 @@ public class SovereignSword implements CustomItem {
             meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 3, true);
             meta.addEnchant(org.bukkit.enchantments.Enchantment.SWEEPING_EDGE, 10, true);
             meta.lore(Lists.newArrayList(
-                    Component.text("Sharpness IV", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),
+                            Component.text("Sharpness IV", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),
                             Component.text("Looting III", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),
-                    Component.text("Sweeping Edge X", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),
-                    Component.text("Blade of the old ruler", NamedTextColor.DARK_PURPLE),
-                    Component.empty(),
-                    Component.text("- Renews on frag", NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false)
-            )
+                            Component.text("Sweeping Edge X", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),
+                            Component.text("Blade of the old ruler", NamedTextColor.DARK_PURPLE),
+                            Component.empty(),
+                            Component.text("- Renews on frag", NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false)
+                    )
             );
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         });
         return Util.saveCustomItem(sword, this);
+    }
+
+    @Override
+    public String plainName() {
+        return "Sovereign Sword";
+    }
+
+    @Override
+    public Component name() {
+        return Component.text("Sovereign Sword", NamedTextColor.BLUE);
     }
 
 }
