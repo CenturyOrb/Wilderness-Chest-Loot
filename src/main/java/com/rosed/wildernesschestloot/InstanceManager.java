@@ -1,9 +1,11 @@
 package com.rosed.wildernesschestloot;
 
 import com.rosed.wildernesschestloot.customitems.ItemManager;
+import com.rosed.wildernesschestloot.customitems.impl.executable.Excalibur;
 import com.rosed.wildernesschestloot.customitems.listeners.EquippableItemListener;
 import com.rosed.wildernesschestloot.customitems.listeners.ExecutableItemListener;
 import com.rosed.wildernesschestloot.customitems.ItemCommand;
+import com.rosed.wildernesschestloot.customitems.tracker.ExcaliburTracker;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 
@@ -13,6 +15,7 @@ public enum InstanceManager {
 
     private WildernessChestLoot plugin;
     private ItemManager itemManager;
+    private ExcaliburTracker excaliburTracker;
 
     public void start(WildernessChestLoot plugin) {
         assert plugin != null : "Error while starting Wilderness-Chest-Loot";
@@ -33,6 +36,8 @@ public enum InstanceManager {
         pluginManager.registerEvents(new EquippableItemListener(), plugin);
         // Loot listener
         pluginManager.registerEvents(new ChestGenerateEvent(), plugin);
+        // Trackers
+        excaliburTracker = new ExcaliburTracker();
 
         // Register commands
         // We use the command map to register commands instead of declaring them into the plugin.yml
@@ -46,5 +51,7 @@ public enum InstanceManager {
     public ItemManager getItemManager() {
         return itemManager;
     }
+
+    public ExcaliburTracker getExcaliburTracker() { return excaliburTracker; }
 
 }

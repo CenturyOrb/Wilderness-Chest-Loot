@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import com.rosed.wildernesschestloot.InstanceManager;
 import com.rosed.wildernesschestloot.customitems.impl.CustomItem;
 import com.rosed.wildernesschestloot.customitems.impl.equippable.TalariaBoots;
+import com.rosed.wildernesschestloot.customitems.impl.executable.Excalibur;
 import com.rosed.wildernesschestloot.customitems.impl.executable.ExplosiveBow;
 import com.rosed.wildernesschestloot.customitems.impl.executable.SovereignSword;
 import com.rosed.wildernesschestloot.customitems.impl.executable.StyxScythe;
@@ -23,6 +24,7 @@ public class ItemManager {
         registerItem(SovereignSword.class);
         registerItem(ExplosiveBow.class);
         registerItem(StyxScythe.class);
+        registerItem(Excalibur.class);
 
         // Equippable Items
         registerItem(TalariaBoots.class);
