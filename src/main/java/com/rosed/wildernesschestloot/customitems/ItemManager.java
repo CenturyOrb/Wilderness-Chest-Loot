@@ -4,6 +4,9 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.rosed.wildernesschestloot.InstanceManager;
 import com.rosed.wildernesschestloot.customitems.impl.CustomItem;
+import com.rosed.wildernesschestloot.customitems.impl.equippable.AegisDispersor;
+import com.rosed.wildernesschestloot.customitems.impl.equippable.AegisEffectThingie;
+import com.rosed.wildernesschestloot.customitems.impl.equippable.GoldenFleece;
 import com.rosed.wildernesschestloot.customitems.impl.equippable.TalariaBoots;
 import com.rosed.wildernesschestloot.customitems.impl.executable.Excalibur;
 import com.rosed.wildernesschestloot.customitems.impl.executable.ExplosiveBow;
@@ -17,6 +20,7 @@ import java.util.Map;
 public class ItemManager {
 
     private final Map<String, CustomItem<?>> items = Maps.newHashMap();
+    private AegisEffectThingie aegisEffectThingie;
 
     public ItemManager() {
         // Register all the items by class
@@ -25,9 +29,13 @@ public class ItemManager {
         registerItem(ExplosiveBow.class);
         registerItem(StyxScythe.class);
         registerItem(Excalibur.class);
+        registerItem(AegisDispersor.class);
 
         // Equippable Items
         registerItem(TalariaBoots.class);
+        registerItem(GoldenFleece.class);
+        aegisEffectThingie = new AegisEffectThingie();
+        aegisEffectThingie.runTaskTimer(InstanceManager.INSTANCE.getPlugin(), 0L, 3L);
 
         // Throwable Items
     }
@@ -70,5 +78,7 @@ public class ItemManager {
             InstanceManager.INSTANCE.getPlugin().getLogger().severe("Failed to register custom item: " + itemClass.getSimpleName());
         }
     }
+
+    public AegisEffectThingie getAegisEffectThingie() { return aegisEffectThingie; }
 
 }
