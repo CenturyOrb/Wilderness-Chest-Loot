@@ -1,10 +1,9 @@
 package com.rosed.wildernesschestloot;
 
+import com.rosed.wildernesschestloot.customitems.ItemCommand;
 import com.rosed.wildernesschestloot.customitems.ItemManager;
-import com.rosed.wildernesschestloot.customitems.impl.executable.Excalibur;
 import com.rosed.wildernesschestloot.customitems.listeners.EquippableItemListener;
 import com.rosed.wildernesschestloot.customitems.listeners.ExecutableItemListener;
-import com.rosed.wildernesschestloot.customitems.ItemCommand;
 import com.rosed.wildernesschestloot.customitems.tracker.ExcaliburTracker;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -52,6 +51,8 @@ public enum InstanceManager {
         return itemManager;
     }
 
-    public ExcaliburTracker getExcaliburTracker() { return excaliburTracker; }
+    public ExcaliburTracker getExcaliburTracker() {
+        return excaliburTracker;
+    }
 
 }

@@ -14,7 +14,6 @@ import org.bukkit.potion.PotionEffectType;
 
 public class GoldenFleece implements EquippableItem {
 
-
     @Override
     public boolean shouldTrigger(EquipmentSlot trigger) {
         return trigger == EquipmentSlot.CHEST;
@@ -30,7 +29,7 @@ public class GoldenFleece implements EquippableItem {
             meta.addEnchant(Enchantment.DURABILITY, 10, true);
             meta.lore(Lists.newArrayList(
                             Component.text("Woven from the ethereal threads of the", NamedTextColor.DARK_PURPLE),
-                    Component.text("legendary Gilded Ewe", NamedTextColor.DARK_PURPLE),
+                            Component.text("legendary Gilded Ewe", NamedTextColor.DARK_PURPLE),
                             Component.empty(),
                             Component.text("- Regeneration", NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false)
                     )

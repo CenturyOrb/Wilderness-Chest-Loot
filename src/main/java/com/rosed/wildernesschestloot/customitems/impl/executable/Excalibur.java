@@ -48,12 +48,14 @@ public class Excalibur implements ExecutableItem {
     }
 
     @Override
-    public Component name()  {return Component.text("Excalibur", NamedTextColor.BLUE); }
+    public Component name() {
+        return Component.text("Excalibur", NamedTextColor.BLUE);
+    }
 
     @Override
     public void execute(LivingEntity executor, Entity... targets) {
         ExcaliburTracker excaliburHitTracker = InstanceManager.INSTANCE.getExcaliburTracker();
-        if (excaliburHitTracker.get(executor) == - 1)   {
+        if (excaliburHitTracker.get(executor) == -1) {
             excaliburHitTracker.add(executor);
         }
 

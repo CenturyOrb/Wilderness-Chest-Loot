@@ -8,10 +8,10 @@ import java.util.Map;
 
 public class ExcaliburTracker implements Tracker<LivingEntity, Integer> {
 
-    private Map<LivingEntity, Integer> excaliburMap;
+    private final Map<LivingEntity, Integer> excaliburMap;
     private final int defaultValue = 0;
 
-    public ExcaliburTracker()   {
+    public ExcaliburTracker() {
         excaliburMap = new HashMap<>();
 
     }
@@ -35,7 +35,8 @@ public class ExcaliburTracker implements Tracker<LivingEntity, Integer> {
 
     @Override
     public Integer get(LivingEntity entity) {
-        if (!excaliburMap.containsKey(entity))   return - 1;
+        if (!excaliburMap.containsKey(entity))
+            return -1;
         return excaliburMap.get(entity);
     }
 
