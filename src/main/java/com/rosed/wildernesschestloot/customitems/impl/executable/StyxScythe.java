@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
 public class StyxScythe implements ExecutableItem {
 
     @Override
-    public void execute(LivingEntity executor, Entity... targets) {
+    public void execute(Event trigger, LivingEntity executor, Entity... targets) {
         for (Entity target : targets) {
             if (target instanceof Player victim)
                 if (victim.isSprinting())

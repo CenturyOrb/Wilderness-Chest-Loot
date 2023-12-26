@@ -20,7 +20,7 @@ import org.bukkit.inventory.meta.Damageable;
 public class SovereignSword implements ExecutableItem {
 
     @Override
-    public void execute(LivingEntity executor, Entity... targets) {
+    public void execute(Event trigger, LivingEntity executor, Entity... targets) {
         Bukkit.getScheduler().runTaskLater(InstanceManager.INSTANCE.getPlugin(), () -> {
             executor.getEquipment().getItemInMainHand().editMeta(Damageable.class, meta -> meta.setDamage(0));
         }, 1);

@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 public class ExplosiveBow implements ExecutableItem {
 
     @Override
-    public void execute(LivingEntity executor, Entity... targets) {
+    public void execute(Event trigger, LivingEntity executor, Entity... targets) {
 
     }
 

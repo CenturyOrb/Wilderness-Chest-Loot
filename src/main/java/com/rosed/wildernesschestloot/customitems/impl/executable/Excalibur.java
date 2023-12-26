@@ -60,7 +60,7 @@ public class Excalibur implements ExecutableItem {
     private int hitCount;
 
     @Override
-    public void execute(LivingEntity executor, Entity... targets) {
+    public void execute(Event trigger, LivingEntity executor, Entity... targets) {
 
         // Alternative #1
         if (++hitCount >= 5) {

@@ -5,10 +5,8 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.Event;
 
-import java.util.List;
-
 public interface ExecutableItem extends CustomItem<Event> {
 
-    void execute(LivingEntity executor, Entity... targets);
+    void execute(Event trigger, LivingEntity executor, Entity... targets);
 
 }

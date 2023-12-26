@@ -13,6 +13,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.EntityEquipment;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 public class ExecutableItemListener implements Listener {
@@ -86,19 +87,21 @@ public class ExecutableItemListener implements Listener {
         if (entityEquipment == null)
             return;
 
-        ItemStack handItem = entityEquipment.getItemInMainHand();
+        // Iterating over all the equipment slot allows to all or multiple items to be executed
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            ItemStack slottedItem = entityEquipment.getItem(slot);
 
-        // Check if the item is a custom item
-        ExecutableItem customItem = Util.getCustomItem(ExecutableItem.class, handItem);
-        if (customItem == null)
-            return;
+            // Check if the item is a custom item
+            ExecutableItem customItem = Util.getCustomItem(ExecutableItem.class, slottedItem);
+            if (customItem == null)
+                continue;
 
-        // Check if the item should be triggered by this event
-        if (!customItem.shouldTrigger(sourceEvent))
-            return;
+            // Check if the item should be triggered by this event
+            if (customItem.shouldTrigger(sourceEvent))
+                // Execute the custom item
+                customItem.execute(sourceEvent, sourceEntity, targets);
+        }
 
-        // Execute the custom item
-        customItem.execute(sourceEntity, targets);
     }
 
 }
