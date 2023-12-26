@@ -42,4 +42,5 @@ public class ExplosiveBow implements ExecutableItem {
     public Component name() {
         return Component.text("Explosive Bow", NamedTextColor.RED);
     }
+
 }

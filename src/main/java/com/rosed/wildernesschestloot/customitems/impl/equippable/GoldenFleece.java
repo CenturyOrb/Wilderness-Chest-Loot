@@ -58,4 +58,5 @@ public class GoldenFleece implements EquippableItem {
     public void onUnequip(LivingEntity target) {
         target.removePotionEffect(PotionEffectType.REGENERATION);
     }
+
 }

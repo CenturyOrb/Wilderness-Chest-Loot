@@ -6,7 +6,6 @@ import com.rosed.wildernesschestloot.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.LivingEntity;
@@ -50,13 +49,11 @@ public class AegisDispersor implements EquippableItem {
 
     @Override
     public void onEquip(LivingEntity target) {
-        Bukkit.broadcastMessage("hi");
         InstanceManager.INSTANCE.getItemManager().getAegisEffectThingie().getAegisUsers().add(target);
     }
 
     @Override
     public void onUnequip(LivingEntity target) {
-        Bukkit.broadcastMessage("bye");
         InstanceManager.INSTANCE.getItemManager().getAegisEffectThingie().getAegisUsers().remove(target);
     }
 

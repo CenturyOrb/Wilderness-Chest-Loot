@@ -54,4 +54,5 @@ public class ExcaliburTracker implements Tracker<LivingEntity, Integer> {
     public void remove(LivingEntity entity) {
         excaliburMap.remove(entity);
     }
+
 }

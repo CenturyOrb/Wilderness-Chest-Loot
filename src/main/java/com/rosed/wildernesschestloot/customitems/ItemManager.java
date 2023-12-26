@@ -20,7 +20,7 @@ import java.util.Map;
 public class ItemManager {
 
     private final Map<String, CustomItem<?>> items = Maps.newHashMap();
-    private AegisEffectThingie aegisEffectThingie;
+    private final AegisEffectThingie aegisEffectThingie;
 
     public ItemManager() {
         // Register all the items by class
@@ -79,6 +79,8 @@ public class ItemManager {
         }
     }
 
-    public AegisEffectThingie getAegisEffectThingie() { return aegisEffectThingie; }
+    public AegisEffectThingie getAegisEffectThingie() {
+        return aegisEffectThingie;
+    }
 
 }
