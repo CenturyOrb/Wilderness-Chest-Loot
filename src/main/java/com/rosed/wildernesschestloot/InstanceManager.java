@@ -5,13 +5,17 @@ import com.rosed.wildernesschestloot.customitems.ItemManager;
 import com.rosed.wildernesschestloot.customitems.listeners.EquippableItemListener;
 import com.rosed.wildernesschestloot.customitems.listeners.ExecutableItemListener;
 import com.rosed.wildernesschestloot.customitems.tracker.ExcaliburTracker;
+import com.rosed.wildernesschestloot.util.AlternativeTracker;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
+
+import java.util.UUID;
 
 public enum InstanceManager {
 
     INSTANCE;
 
+    private final AlternativeTracker<UUID, Integer> alternativeExcaliburTracker = new AlternativeTracker<>(0);
     private WildernessChestLoot plugin;
     private ItemManager itemManager;
     private ExcaliburTracker excaliburTracker;
@@ -53,6 +57,10 @@ public enum InstanceManager {
 
     public ExcaliburTracker getExcaliburTracker() {
         return excaliburTracker;
+    }
+
+    public AlternativeTracker<UUID, Integer> alternativeTracker() {
+        return alternativeExcaliburTracker;
     }
 
 }
