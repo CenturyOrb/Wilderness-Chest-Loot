@@ -12,12 +12,18 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.io.*;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Util {
 
     public static final NamespacedKey augmentKey = new NamespacedKey(InstanceManager.INSTANCE.getPlugin(), "custom_item");
 
     private Util() {
+    }
+
+    // We check if something should happen if the random number is lower or equal than the probability
+    public static boolean rollDice(int probability) {
+        return ThreadLocalRandom.current().nextInt(0, 100) <= probability;
     }
 
     public static <T extends CustomItem<?>> List<T> equippedCustomItems(Class<T> itemType, EntityEquipment equipment) {
