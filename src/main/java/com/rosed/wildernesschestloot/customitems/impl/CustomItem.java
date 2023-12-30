@@ -9,6 +9,15 @@ import java.io.Serializable;
 public interface CustomItem<T> extends Serializable {
 
     /**
+     * Called when the item is registered
+     * This is called after the item being registered on the item manager
+     * Can be used to register listeners or run other logic
+     */
+    default void onRegister() {
+
+    }
+
+    /**
      * The generic type of the class represents the trigger type
      * This method should return true if the trigger should trigger the item
      *

@@ -71,6 +71,8 @@ public class ItemManager {
         try {
             // We use reflections to get the no args constructor and create a new instance of the item
             T item = itemClass.getDeclaredConstructor().newInstance();
+            // We call the onRegister method for the custom item to register listeners or run other logic
+            item.onRegister();
             // We get the name of item and put it in the map
             items.put(item.plainName(), item);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
