@@ -4,10 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.rosed.wildernesschestloot.InstanceManager;
 import com.rosed.wildernesschestloot.customitems.impl.CustomItem;
-import com.rosed.wildernesschestloot.customitems.impl.equippable.AegisDispersor;
-import com.rosed.wildernesschestloot.customitems.impl.equippable.AegisEffectThingie;
-import com.rosed.wildernesschestloot.customitems.impl.equippable.GoldenFleece;
-import com.rosed.wildernesschestloot.customitems.impl.equippable.TalariaBoots;
+import com.rosed.wildernesschestloot.customitems.impl.equippable.*;
 import com.rosed.wildernesschestloot.customitems.impl.executable.Excalibur;
 import com.rosed.wildernesschestloot.customitems.impl.executable.ExplosiveBow;
 import com.rosed.wildernesschestloot.customitems.impl.executable.SovereignSword;
@@ -30,14 +27,17 @@ public class ItemManager {
         registerItem(StyxScythe.class);
         registerItem(Excalibur.class);
         registerItem(AegisDispersor.class);
+        registerItem(NecromancerStaff.class);
 
         // Equippable Items
         registerItem(TalariaBoots.class);
         registerItem(GoldenFleece.class);
-        aegisEffectThingie = new AegisEffectThingie();
-        aegisEffectThingie.runTaskTimer(InstanceManager.INSTANCE.getPlugin(), 0L, 3L);
 
         // Throwable Items
+
+        // Maybe we can move this to the onRegister method of the item
+        aegisEffectThingie = new AegisEffectThingie();
+        aegisEffectThingie.runTaskTimer(InstanceManager.INSTANCE.getPlugin(), 0L, 3L);
     }
 
     /**
