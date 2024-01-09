@@ -28,7 +28,7 @@ public class AegisEffectThingie extends BukkitRunnable {
         for (LivingEntity user : aegisUsers) {
             for (Entity entity : user.getNearbyEntities(5, 5, 5)) {
                 if (entity instanceof Arrow arrow) {
-                    arrow.getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, arrow.getLocation(), 1, 1);
+                    arrow.getWorld().spawnParticle(Particle.END_ROD, arrow.getLocation(), 1, 0, 0, 0, 0);
                     arrow.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1, 1);
                     arrow.remove();
                 }

@@ -62,7 +62,8 @@ public class NecromancerStaff implements ExecutableItem {
 
     @Override
     public ItemStack itemStack() {
-        return ItemBuilder.start(Material.STICK).build();
+        ItemStack necromancerStaff = ItemBuilder.start(Material.STICK).build();
+        return Util.saveCustomItem(necromancerStaff, this);
     }
 
     @Override
@@ -80,6 +81,7 @@ public class NecromancerStaff implements ExecutableItem {
     @Override
     public void execute(Event trigger, LivingEntity executor, Entity... targets) {
         if (trigger instanceof PlayerDeathEvent) {
+            System.out.println("target length is " + targets.length);
             for (Entity target : targets) {
                 UUID spawned = spawnMinion(executor, target);
                 if (spawned != null)
@@ -113,8 +115,10 @@ public class NecromancerStaff implements ExecutableItem {
     }
 
     private UUID spawnMinion(Entity summoner, Entity target) {
+
+        System.out.println("spawn minion ran");
         // 30% chance to spawn a minion from a killed entity
-        boolean shouldSpawn = Util.rollDice(30);
+        boolean shouldSpawn = Util.rollDice(100);
         if (!shouldSpawn)
             return null;
 
