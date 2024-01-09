@@ -28,28 +28,12 @@ public class AegisEffectThingie extends BukkitRunnable {
         for (LivingEntity user : aegisUsers) {
             for (Entity entity : user.getNearbyEntities(5, 5, 5)) {
                 if (entity instanceof Arrow arrow) {
-                    arrow.getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, arrow.getLocation(), 1, 1);
+                    arrow.getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, arrow.getLocation(), 1);
                     arrow.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1, 1);
                     arrow.remove();
                 }
             }
         }
-
-//        List<Arrow> arrows = new ArrayList<>();
-//        for (World world : Bukkit.getWorlds()) {
-//            for (Entity entity : world.getEntities()) {
-//                if (entity instanceof Arrow) arrows.add((Arrow) entity);
-//            }
-//        }
-//
-//        for (Arrow arrow : arrows) {
-//            for (LivingEntity entity : aegisUsers) {
-//                if (arrow.getLocation().distance(entity.getLocation()) < 5)
-//                    Bukkit.getWorld(arrow.getWorld().getUID()).spawnParticle(Particle.EXPLOSION_NORMAL, arrow.getLocation(), 1, 1);
-//                    Bukkit.getWorld(arrow.getWorld().getUID()).playSound(arrow.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1, 1);
-//                    arrow.remove();
-//            }
-//        }
     }
 
     public List<LivingEntity> getAegisUsers() {

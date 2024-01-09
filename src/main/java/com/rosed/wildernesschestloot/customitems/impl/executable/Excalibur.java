@@ -1,8 +1,6 @@
 package com.rosed.wildernesschestloot.customitems.impl.executable;
 
 import com.google.common.collect.Lists;
-import com.rosed.wildernesschestloot.InstanceManager;
-import com.rosed.wildernesschestloot.util.AlternativeTracker;
 import com.rosed.wildernesschestloot.util.Util;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -16,8 +14,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-
-import java.util.UUID;
 
 public class Excalibur implements ExecutableItem {
 
@@ -74,27 +70,5 @@ public class Excalibur implements ExecutableItem {
         // Then we save this instance once again into the item, with the hitCount updated
         Util.saveCustomItem(sword, this);
 
-        // Alternative #2
-        UUID uuid = executor.getUniqueId();
-        AlternativeTracker<UUID, Integer> alternativeTracker = InstanceManager.INSTANCE.alternativeTracker();
-        // We increase the hit by one
-        Integer hits = alternativeTracker.merge(uuid, 1, Integer::sum);
-
-        // It activates after 5 hits
-        if (hits >= 5) {
-            executor.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 100, 0, true, false, true));
-            // After applying the effect, we reset the count
-            alternativeTracker.remove(uuid);
-        }
-
-//        ExcaliburTracker excaliburHitTracker = InstanceManager.INSTANCE.getExcaliburTracker();
-//        if (excaliburHitTracker.get(executor) == -1) {
-//            excaliburHitTracker.add(executor);
-//        }
-//
-//        excaliburHitTracker.increment(executor);
-//        if (excaliburHitTracker.get(executor) == 0) {
-//            executor.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 100, 0, true, false, true));
-//        }
     }
 }
