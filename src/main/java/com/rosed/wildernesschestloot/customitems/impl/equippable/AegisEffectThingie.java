@@ -34,22 +34,6 @@ public class AegisEffectThingie extends BukkitRunnable {
                 }
             }
         }
-
-//        List<Arrow> arrows = new ArrayList<>();
-//        for (World world : Bukkit.getWorlds()) {
-//            for (Entity entity : world.getEntities()) {
-//                if (entity instanceof Arrow) arrows.add((Arrow) entity);
-//            }
-//        }
-//
-//        for (Arrow arrow : arrows) {
-//            for (LivingEntity entity : aegisUsers) {
-//                if (arrow.getLocation().distance(entity.getLocation()) < 5)
-//                    Bukkit.getWorld(arrow.getWorld().getUID()).spawnParticle(Particle.EXPLOSION_NORMAL, arrow.getLocation(), 1, 1);
-//                    Bukkit.getWorld(arrow.getWorld().getUID()).playSound(arrow.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1, 1);
-//                    arrow.remove();
-//            }
-//        }
     }
 
     public List<LivingEntity> getAegisUsers() {
