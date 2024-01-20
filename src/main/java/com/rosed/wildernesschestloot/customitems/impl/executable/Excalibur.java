@@ -26,7 +26,7 @@ public class Excalibur implements ExecutableItem {
     public ItemStack itemStack() {
         ItemStack sword = new ItemStack(Material.GOLDEN_SWORD);
         sword.editMeta(meta -> {
-            meta.displayName(Component.text("Excalibur", NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
+            meta.displayName(Component.text("Excalibur", NamedTextColor.GOLD).decoration(TextDecoration.ITALIC, false));
             meta.addEnchant(org.bukkit.enchantments.Enchantment.DAMAGE_ALL, 6, true);
             meta.lore(Lists.newArrayList(
                             Component.text("Sharpness VI", NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),

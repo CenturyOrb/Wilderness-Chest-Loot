@@ -42,15 +42,14 @@ public class TalariaBoots implements EquippableItem {
     @Override
     public ItemStack itemStack() {
         ItemStack talariaBoots = ItemBuilder.start(Material.IRON_BOOTS)
-                .name("<yellow><b><i>Talaria Boots")
-                .lore("<#dfc76c>These boots were made for walking")
-                .lore("<#dfc76c>and that's just what they'll do")
-                .lore("<#dfc76c>one of these days these boots")
-                .lore("<#dfc76c>are gonna walk all over you")
-                .lore(" ")
+                .name("<RED>Talaria Boots")
                 .lore("<gray>Protection V")
                 .lore("<gray>Unbreaking V")
                 .lore("<gray>Feather Falling VII")
+                .lore("<i><DARK_PURPLE>imbued with magical speed")
+                .lore("<i><DARK_PURPLE>and agility")
+                .lore(" ")
+                .lore("<GREEN>- Speed boost")
                 .meta(meta -> {
                     meta.addEnchant(Enchantment.DURABILITY, 5, true);
                     meta.addEnchant(Enchantment.PROTECTION_FALL, 7, true);

@@ -10,6 +10,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -18,6 +19,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -62,7 +64,18 @@ public class NecromancerStaff implements ExecutableItem {
 
     @Override
     public ItemStack itemStack() {
-        ItemStack necromancerStaff = ItemBuilder.start(Material.STICK).build();
+        ItemStack necromancerStaff = ItemBuilder.start(Material.STICK)
+                .name("<GOLD>Necromancer Staff")
+                .lore("<i><DARK_PURPLE>manipulate and control the")
+                .lore("<i><DARK_PURPLE>forces of death")
+                .lore(" ")
+                .lore("<GREEN>- Necromance")
+                .meta(meta -> {
+                    meta.addEnchant(Enchantment.DURABILITY, 5, true);
+                    meta.addEnchant(Enchantment.PROTECTION_FALL, 7, true);
+                    meta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 5, true);
+                }).flags(ItemFlag.HIDE_ENCHANTS)
+                .build();
         return Util.saveCustomItem(necromancerStaff, this);
     }
 

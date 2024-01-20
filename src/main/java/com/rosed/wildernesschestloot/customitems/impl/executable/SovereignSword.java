@@ -36,7 +36,7 @@ public class SovereignSword implements ExecutableItem {
     public ItemStack itemStack() {
         ItemStack sword = new ItemStack(Material.GOLDEN_SWORD);
         sword.editMeta(meta -> {
-            meta.displayName(Component.text("Sovereign Sword", NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
+            meta.displayName(Component.text("Sovereign Sword", NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
             meta.addEnchant(org.bukkit.enchantments.Enchantment.DAMAGE_ALL, 4, true);
             meta.addEnchant(Enchantment.LOOT_BONUS_MOBS, 3, true);
             meta.addEnchant(org.bukkit.enchantments.Enchantment.SWEEPING_EDGE, 10, true);
